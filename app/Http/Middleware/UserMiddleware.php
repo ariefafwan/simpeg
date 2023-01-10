@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class Admin
+class UserMiddleware
 {
     /**
      * Handle an incoming request.
@@ -17,7 +17,7 @@ class Admin
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::user()->role_id != "1") {
+        if (Auth::user()->role_id != "2") {
             /* 
             silahkan modifikasi pada bagian ini
             apa yang ingin kamu lakukan jika rolenya tidak sesuai

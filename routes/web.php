@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -30,7 +32,7 @@ Route::middleware(['auth'])->group(function () {
 
         //Middleware User
         Route::middleware(['user'])->group(function () {
-            Route::get('user/dashboard', [AdminController::class, 'index'])->name('admin');
+            Route::get('user/dashboard', [UserController::class, 'index'])->name('user');
         });
 
     Route::get('/logout', [HomeController::class, 'logout'])->name('logout');
