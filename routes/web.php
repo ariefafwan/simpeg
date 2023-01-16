@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\DivisiController;
+use App\Http\Controllers\Admin\KriteriaController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -28,6 +30,8 @@ Route::middleware(['auth'])->group(function () {
          //Middleware Admin
          Route::middleware(['admin'])->group(function () {
             Route::get('admin/dashboard', [AdminController::class, 'index'])->name('admin');
+            Route::resource('admin/divisi', DivisiController::class);
+            Route::resource('admin/kriteria', KriteriaController::class);
         });
 
         //Middleware User
