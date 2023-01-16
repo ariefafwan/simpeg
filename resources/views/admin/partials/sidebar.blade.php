@@ -70,10 +70,10 @@
         </a>
     </li>
 
-    <li class="nav-item  {{ ($page == "Pertanyaan") ? 'active' : '' }}">
-        <a class="nav-link" href="#">
-            <i class="fa fa-address-card" aria-hidden="true"></i>
-            <span>Penilaian</span>
+    <li class="nav-item  {{ ($page == "Daftar Pertanyaan") ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('pertanyaan.index') }}">
+            <i class="fa fa-question" aria-hidden="true"></i>
+            <span>Pertanyaan</span>
         </a>
     </li>
     

@@ -19,7 +19,7 @@
                     </div>
                 </div>
                 <div class="box-footer">
-                    <button type="submit" class="btn btn-primary btn-flat">Tambah</button>
+                    <button type="submit" class="btn btn-success btn-flat">Edit</button>
                 </div>
             </div>
 
