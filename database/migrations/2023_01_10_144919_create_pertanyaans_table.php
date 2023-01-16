@@ -15,6 +15,9 @@ class CreatePertanyaansTable extends Migration
     {
         Schema::create('pertanyaans', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->bigInteger('kriteria_id')->unsigned();
+            $table->foreign('kriteria_id')->references('id')->on('kriterias')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
