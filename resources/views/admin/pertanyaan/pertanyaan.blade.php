@@ -17,7 +17,6 @@
                             <tr>
                                 <th class="text-center">#</th>
                                 <th class="text-center">Nama Pertanyaan</th>
-                                <th class="text-center">Kriteria</th>
                                 <th class="text-center">Aksi</th>
                             </tr>
                         </thead>
@@ -27,7 +26,6 @@
                             <tr align="center">
                                 <th scope="row">{{ $index + 1 }}</th>
                                 <td align="left">{{ $row->name }}</td>
-                                <td align="center">{{ $row->kriteria->name }}</td>
                                 <td>
                                     <div class="btn-group">
                                         {{-- <a href="" class="btn btn-primary btn-flat"><i class="fa fa-eye"></i></a> --}}

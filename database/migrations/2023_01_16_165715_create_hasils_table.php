@@ -15,9 +15,12 @@ class CreateHasilsTable extends Migration
     {
         Schema::create('hasils', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->float('nilai');
             $table->bigInteger('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('divisis')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->date('tgl_nilai');
+            $table->longText('saran');
+            $table->string('grade');
             $table->timestamps();
         });
     }
