@@ -63,17 +63,17 @@
         </a>
     </li>
 
-    <li class="nav-item  {{ ($page == "Kriteria Penilaian") ? 'active' : '' }}">
-        <a class="nav-link" href="{{ route('kriteria.index') }}">
-            <i class="fa fa-list-ol" aria-hidden="true"></i>
-            <span>Kriteria Penilaian</span>
-        </a>
-    </li>
-
     <li class="nav-item  {{ ($page == "Daftar Pertanyaan") ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('pertanyaan.index') }}">
             <i class="fa fa-question" aria-hidden="true"></i>
             <span>Pertanyaan</span>
+        </a>
+    </li>
+
+    <li class="nav-item  {{ ($page == "Hasil Penilaian") ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('hasil.index') }}">
+            <i class="fa fa-industry" aria-hidden="true"></i>
+            <span>Hasil Penilaian</span>
         </a>
     </li>
     

@@ -2,8 +2,9 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\DivisiController;
-use App\Http\Controllers\Admin\KriteriaController;
+use App\Http\Controllers\Admin\HasilController;
 use App\Http\Controllers\Admin\PertanyaanController;
+use App\Http\Controllers\User\EditUserController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -32,13 +33,15 @@ Route::middleware(['auth'])->group(function () {
          Route::middleware(['admin'])->group(function () {
             Route::get('admin/dashboard', [AdminController::class, 'index'])->name('admin');
             Route::resource('admin/divisi', DivisiController::class);
-            Route::resource('admin/kriteria', KriteriaController::class);
             Route::resource('admin/pertanyaan', PertanyaanController::class);
+            Route::resource('admin/hasil', HasilController::class);
         });
 
         //Middleware User
         Route::middleware(['user'])->group(function () {
             Route::get('user/dashboard', [UserController::class, 'index'])->name('user');
+            Route::get('user/hasilpenilaian', [UserController::class, 'show'])->name('hasilpenilaian');
+            Route::resource('user/edituser', EditUserController::class);
         });
 
     Route::get('/logout', [HomeController::class, 'logout'])->name('logout');

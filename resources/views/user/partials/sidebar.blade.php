@@ -31,16 +31,23 @@
     </li>
 
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item {{ ($page === "Tambah Permohonan")  ? 'active' : '' }}">
-        <a class="nav-link collapsed" href="#">
+    <li class="nav-item {{ ($page === "Hasil Penilaian")  ? 'active' : '' }}">
+        <a class="nav-link collapsed" href="{{ route ('hasilpenilaian') }}">
             <i class="fas fa-file-alt fa-cog"></i>
-            <span>Tambah Permohonan</span>
+            <span>Hasil Penilaian</span>
+        </a>
+    </li>
+
+    <li class="nav-item {{ ($page === "Edit User")  ? 'active' : '' }}">
+        <a class="nav-link collapsed" href="{{ route('edituser.edit',$user->id) }}">
+            <i class="fa fa-address-book" aria-hidden="true"></i>
+            <span>Edit User</span>
         </a>
     </li>
 
     <!-- Nav Item - Utilities Collapse Menu -->
-    <li class="nav-item">
-        {{-- @if ($nippos) --}}
+    {{-- <li class="nav-item">
+        @if ($nippos)
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
             aria-expanded="true" aria-controls="collapseUtilities">
             <i class="fas fa-laptop"></i>
@@ -49,19 +56,19 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Pemohonan Cuti</h6>
-                {{-- <a class="collapse-item" href="{{ route('izin.index') }}">Permohonan Cuti Dikirim</a>
+                <a class="collapse-item" href="{{ route('izin.index') }}">Permohonan Cuti Dikirim</a>
                 <a class="collapse-item" href="{{ route('diterima') }}">Permohonan Cuti Diterima</a>
-                <a class="collapse-item" href="{{ route('ditolak') }}">Permohonan Cuti Ditolak</a> --}}
+                <a class="collapse-item" href="{{ route('ditolak') }}">Permohonan Cuti Ditolak</a>
             </div>
         </div>
-        {{-- @else --}}
-        {{-- <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+        @else
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
             aria-expanded="true" aria-controls="collapseUtilities">
             <i class="fas fa-laptop"></i>
             <span>Anda Belum Isi Biodata</span>
-        </a> --}}
-        {{-- @endif --}}
-    </li>
+        </a>
+        @endif
+    </li> --}}
 
     <!-- Divider -->
 

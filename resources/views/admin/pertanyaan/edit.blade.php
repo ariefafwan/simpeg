@@ -14,9 +14,9 @@
                     <div class="box-body">
                         <div class="form-group">
                             <label for="">Pertanyaan</label>
-                            <input type="text" name="name" value="{{ $pertanyaan->name }}" class="form-control" id="name" required>
+                            <textarea name="name" id="name" cols="20" rows="8" class="form-control" required>{{ $pertanyaan->name }}</textarea>
                         </div>
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label for="">Kriteria</label>
                             <select class="form-select" name="kriteria_id" id="kriteria_id" aria-label="Floating label select example" required>
                                 <option selected aria-required="true">-- Pilih Kriteria --</option>
@@ -24,7 +24,7 @@
                                     <option value="{{ $row->id }}">{{ $row->name }}</option>
                                     @endforeach
                             </select>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 <div class="box-footer">

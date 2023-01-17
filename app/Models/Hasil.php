@@ -9,10 +9,13 @@ class Hasil extends Model
 {
     use HasFactory;
 
-    // public function kriteria()
-    // {
-    //     return $this->belongsTo(Kriteria::class);
-    // }
+    protected $fillable = [
+        'nilai',
+        'user_id',
+        'tgl_nilai',
+        'saran',
+        'grade',
+    ];
 
     public function user()
     {

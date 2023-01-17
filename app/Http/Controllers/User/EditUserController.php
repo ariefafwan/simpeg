@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\User;
 
-use App\Models\Kriteria;
-use App\Models\Pertanyaan;
+use App\Models\User;
 use Illuminate\Routing\Controller;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class PertanyaanController extends Controller
+use Illuminate\Http\Request;
+
+class EditUserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,10 +17,7 @@ class PertanyaanController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
-        $page = "Daftar Pertanyaan";
-        $pertanyaan = Pertanyaan::all();
-        return view('admin.pertanyaan.pertanyaan', compact('user', 'page', 'pertanyaan'));
+        //
     }
 
     /**
@@ -30,10 +27,7 @@ class PertanyaanController extends Controller
      */
     public function create()
     {
-        $user = Auth::user();
-        $page = "Tambah Pertanyaan";
-        $pertanyaan = Pertanyaan::all();
-        return view('admin.pertanyaan.create', compact('user', 'page', 'pertanyaan'));
+        //
     }
 
     /**
@@ -44,14 +38,7 @@ class PertanyaanController extends Controller
      */
     public function store(Request $request)
     {
-        $dtUpload = new Pertanyaan();
-        $dtUpload->name = $request->name;
-
-        $dtUpload->save();
-
-
-        return redirect()->route('pertanyaan.index')
-            ->with('updatesuccess', 'pertanyaan Berhasil Ditambahkan');
+        
     }
 
     /**
@@ -62,7 +49,9 @@ class PertanyaanController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = Auth::user();
+        $page = "Profile User";
+        return view('user.user', compact('user', 'page'));
     }
 
     /**
@@ -73,10 +62,9 @@ class PertanyaanController extends Controller
      */
     public function edit($id)
     {
-        $user = Auth::user();
-        $page = "Edit Pertanyaan";
-        $pertanyaan = Pertanyaan::findOrFail($id);
-        return view('admin.pertanyaan.edit', compact('user', 'page', 'pertanyaan'));
+        $user = Auth::user($id);
+        $page = "Edit Profile User";
+        return view('user.edit', compact('user', 'page'));
     }
 
     /**
@@ -88,12 +76,25 @@ class PertanyaanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $dtUpload = Pertanyaan::find($id);
-        $dtUpload->name = $request->name;
+        $user = Auth::user($id);
+        
+        $nm = $request->profile_img;
+        $namaFile = $nm->getClientOriginalName();
 
+        $dtUpload = User::find($id);
+        $dtUpload->name = $request->name;
+        $dtUpload->profile_img = $namaFile;
+        $dtUpload->nippos = $request->nippos;
+        $dtUpload->nmrhp = $request->nmrhp;
+        $dtUpload->alamat = $request->alamat;
+        $dtUpload->kantor = $request->kantor;
+        $dtUpload->divisi = $request->divisi;
+        $dtUpload->status_kawin = $request->status_kawin;
+
+        $nm->move(public_path() . '/img/profil', $namaFile);
         $dtUpload->save();
 
-        return redirect()->route('pertanyaan.index')->with(['message' => 'successfully!']);
+        return redirect()->route('edituser.show', $user->id)->with(['message' => 'News created successfully!']);
     }
 
     /**
@@ -104,10 +105,6 @@ class PertanyaanController extends Controller
      */
     public function destroy($id)
     {
-        $pertanyaan = Pertanyaan::findOrFail($id);
-        $pertanyaan->delete();
-
-        return redirect()->route('pertanyaan.index')
-            ->with('updatesuccess', 'Berhasil Dihapus');
+        //
     }
 }
