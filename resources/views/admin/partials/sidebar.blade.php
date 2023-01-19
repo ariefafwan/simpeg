@@ -50,7 +50,7 @@
 
     <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item  {{ ($page == "Daftar User") ? 'active' : '' }}">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{ route('userset.index') }}">
             <i class="fas fa-users"></i>
             <span>Daftar User</span>
         </a>

@@ -24,7 +24,7 @@
                         <tbody>
                             @foreach($pertanyaan as $index => $row)
                             <tr align="center">
-                                <th scope="row">{{ $index + 1 }}</th>
+                                <th>{{ $loop->iteration }}</th>
                                 <td align="left">{{ $row->name }}</td>
                                 <td>
                                     <div class="btn-group">

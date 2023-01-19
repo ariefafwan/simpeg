@@ -35,13 +35,6 @@
                 </div>
                 <div class="col-md-4 mt-5">
                     <div class="p-3 py-5">
-                        <div class="col-md-12"><label class="labels">Status Kawin</label>
-                        <select class="form-select" id="floatingSelect" name="status_kawin" id="status_kawin" aria-label="Floating label select example" required>
-                            <option selected>-- Pilih --</option>
-                            <option value="Belum Menikah">Belum Menikah</option>
-                            <option value="Menikah">Menikah</option>
-                        </select></div>
-                        <div class="col-md-12"><label class="labels">Alamat</label><input type="text" name="alamat" id="alamat" class="form-control" placeholder="Isi Alamat Anda" value="{{ $user->alamat }}" required></div>
                         <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Save Profile</button></div>
                     </div>
                 </div>

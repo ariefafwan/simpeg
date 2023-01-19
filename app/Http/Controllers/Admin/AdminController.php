@@ -13,7 +13,9 @@ class AdminController extends Controller
     {
         $user = Auth::user();
         $page = "Dasboard Admin";
-        return view('admin.dashboard', compact('user', 'page'));
+        $dt1 = DB::table('users')->get()->where('role_id', '2')->count();
+        $dt2 = Hasil::all()->count();
+        return view('admin.dashboard', compact('user', 'page', 'dt2', 'dt1'));
     }
 
     // public function total()

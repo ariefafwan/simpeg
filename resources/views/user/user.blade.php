@@ -23,14 +23,11 @@
                             <div class="col-md-12"><label class="labels">Kantor</label><input type="text" name="kantor" id="kantor" class="form-control" placeholder="Isi Kantor Anda" value="{{ $user->kantor }}" readonly></div>
                             <div class="col-md-12"><label class="labels">Jabatan</label><input type="text" name="role_id" id="role_id" class="form-control" placeholder="enter jabatan" value="{{ $user->role->name }}" readonly></div>
                             <div class="col-md-12"><label class="labels">Divisi</label><input type="text" name="divisi_id" id="divisi_id" class="form-control" placeholder="Isi Divisi Anda" value="{{ $user->divisi->name }}" readonly></div>
-                            <div class="col-md-12"><label class="labels">Nomor Handphone</label><input type="number" name="nmrhp" id="nmrhp" class="form-control" placeholder="enter phone number" value="{{ $user->nmrhp }}" readonly></div>
+                            <div class="col-md-12"><label class="labels">Nomor Handphone</label><input type="number" name="nmrhp" id="nmrhp" class="form-control" value="{{ $user->nmrhp }}" readonly></div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 mt-5">
-                    <div class="p-3 py-5">
-                        <div class="col-md-12"><label class="labels">Status Kawin</label><input type="text" name="nippos" id="nippos" class="form-control" value="{{ $user->status_kawin }}" readonly></div>
-                        <div class="col-md-12"><label class="labels">Alamat</label><input type="text" name="alamat" id="alamat" class="form-control" placeholder="Isi Alamat Anda" value="{{ $user->alamat }}" readonly></div>
                         <div class="btn-group mt-5 ml-3 align-items-center">
                             <a href="{{ route('edituser.edit',$user->id) }}" class="btn btn-success profile-button">Edit</a>
                         </button>
