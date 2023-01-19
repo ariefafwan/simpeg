@@ -11,7 +11,7 @@
         @csrf
         <div class="mb-3">
             <label for="user_id">Pilih Pegawai</label>
-            <select class="form-select" aria-label="Default select example" name="user_id">
+            <select class="form-select" aria-label="Default select example" name="user_id" required>
                 <option selected>-- Pilih --</option>
                 @foreach ($pegawai as $row)
                     <option value="{{ $row->id }}">{{ $row->name }}</option>
@@ -29,7 +29,7 @@
         </div> --}}
         <div class="mb-3">
             <label for="tgl">Tanggal Penilaian</label>
-                <input type="date" id="tgl_nilai" name="tgl_nilai" min="2018-01-01" max="2030-12-31">
+                <input type="date" id="tgl_nilai" name="tgl_nilai" min="2018-01-01" max="2030-12-31" required>
         </div>
         @foreach ($pertanyaan as $row)
             <div class="mb-3">
@@ -71,17 +71,6 @@
         </div>
         <button class="btn btn-primary mb-3" type="submit">Simpan</button>
     </form>
-    {{-- <div class="mb-3">
-                    <label for="pertanyaan" class="form-label">{{ $row->question }}</label>
-                    <select name="data[]" class="form-select">
-                        <option selected>-- Pilih --</option>
-                        <option value='10'>Sangat Baik</option>
-                        <option value='9'>Baik</option>
-                        <option value='8'>Cukup</option>
-                        <option value='7'>Kurang Baik</option>
-                        <option value='6'>Sangat Kurang Baik</option>
-                    </select>
-                </div> --}}
     </div>
     </div>
 </div>

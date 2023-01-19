@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers\Admin;
 
+use App\Models\Divisi;
 use App\Models\User;
 use Illuminate\Routing\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-use Illuminate\Http\Request;
-
-class EditUserController extends Controller
+class UserSetController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +17,14 @@ class EditUserController extends Controller
      */
     public function index()
     {
-        //
+        $user = Auth::user();
+        $page = "Daftar Pegawai";
+        $divisi = Divisi::all();
+        $pegawai = User::all()-> where('role_id', '2');
+        if ($pegawai->isEmpty()) {
+            return view('admin.user.belum', compact('user', 'pegawai', 'page', 'divisi'));
+        }
+        return view('admin.user.daftaruser', compact('user', 'pegawai', 'page', 'divisi'));
     }
 
     /**
@@ -38,7 +45,7 @@ class EditUserController extends Controller
      */
     public function store(Request $request)
     {
-        
+        //
     }
 
     /**
@@ -49,9 +56,7 @@ class EditUserController extends Controller
      */
     public function show($id)
     {
-        $user = Auth::user();
-        $page = "Profile User";
-        return view('user.user', compact('user', 'page'));
+        //
     }
 
     /**
@@ -62,9 +67,7 @@ class EditUserController extends Controller
      */
     public function edit($id)
     {
-        $user = Auth::user($id);
-        $page = "Edit Profile User";
-        return view('user.edit', compact('user', 'page'));
+        //
     }
 
     /**
@@ -76,23 +79,12 @@ class EditUserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = Auth::user($id);
-        
-        $nm = $request->profile_img;
-        $namaFile = $nm->getClientOriginalName();
-
         $dtUpload = User::find($id);
-        $dtUpload->name = $request->name;
-        $dtUpload->profile_img = $namaFile;
-        $dtUpload->nippos = $request->nippos;
-        $dtUpload->nmrhp = $request->nmrhp;
-        $dtUpload->alamat = $request->alamat;
-        $dtUpload->kantor = $request->kantor;
+        $dtUpload->divisi_id = $request->divisi_id;
 
-        $nm->move(public_path() . '/img/profil', $namaFile);
         $dtUpload->save();
 
-        return redirect()->route('edituser.show', $user->id)->with(['message' => 'News created successfully!']);
+        return redirect()->route('userset.index')->with(['message' => 'successfully!']);
     }
 
     /**
@@ -103,6 +95,10 @@ class EditUserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->delete();
+
+        return redirect()->route('userset.index')
+            ->with('updatesuccess', 'Berhasil Dihapus');
     }
 }

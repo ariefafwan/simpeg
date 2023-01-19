@@ -25,6 +25,10 @@ class HasilController extends Controller
         $data = Hasil::all();
 
         $chart = Hasil::all();
+        if ($data->isEmpty()) {
+            return view('admin.nilai.belum', compact('user', 'page', 'pegawai', 'data'));
+        }
+
         foreach ($chart as $n) {
             $jlhNilai = $n->nilai;
         }
@@ -41,6 +45,7 @@ class HasilController extends Controller
         $dataSkb = $chart->whereBetween('nilai', [6, 6.9])->count();
         
         return view('admin.nilai.hasil', compact('user', 'page', 'data', 'pegawai', 'dataSb', 'dataB', 'dataC', 'dataKb', 'dataSkb'));
+
     }
 
     /**

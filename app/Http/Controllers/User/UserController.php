@@ -14,7 +14,8 @@ class UserController extends Controller
     {
         $user = Auth::user();
         $page = "Dasboard User";
-        return view('user.dashboard', compact('user', 'page'));
+        $dt2 = Hasil::all()->where('user_id' , $user)->count();
+        return view('user.dashboard', compact('user', 'page', 'dt2'));
     }
 
     public function show()
@@ -24,6 +25,9 @@ class UserController extends Controller
         $data = Hasil::all()->where('user_id', Auth::user()->id);
 
         $chart = Hasil::all()->where('user_id', Auth::user()->id);
+        if ($data->isEmpty()) {
+            return view('user.belum', compact('user', 'page', 'data' ,'chart'));
+        }  
         foreach ($chart as $n) {
             $op = $n->nilai;
         }
@@ -38,8 +42,9 @@ class UserController extends Controller
         $dataC = $chart->whereBetween('nilai', [8, 8.9])->count();
         $dataKb = $chart->whereBetween('nilai', [7, 7.9])->count();
         $dataSkb = $chart->whereBetween('nilai', [6, 6.9])->count();
-        
+
         return view('user.hasil', compact('user', 'page', 'data', 'dataSb', 'dataB', 'dataC', 'dataKb', 'dataSkb'));
+        
     }
 
     // public function show()
